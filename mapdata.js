@@ -99,7 +99,8 @@ var simplemaps_countrymap_mapdata = {
       name: "Córdoba",
       description: 'Córdoba es un departamento en el norte de Colombia, conocido por sus playas, música vallenata y rica historia cultural.',
 
-      color:'#F1B600'
+      color:'#F1B600',
+      url:'https://youtu.be/GUuBZ3IP3qs?si=zeVNIugV5KdKHMOs'
     },
     COL1317: {
       name: "Santander",
