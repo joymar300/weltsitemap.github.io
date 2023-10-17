@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mapa weltsite</title>
+  <link rel="stylesheet" href="stylemap.css">
+  <script src="./mapdata.js"></script>
+  <script src="./countrymap.js"></script>
+</head>
+
+<body>
+  <!-- <div class="cursor"></div> -->
+  <script type="text/javascript">
+
+    document.addEventListener("mouseout", () => {
+      cursor.style.display = "none";
+    });
+    function hideTrialText() {
+      var trialText = document.querySelector('a[href="https://simplemaps.com"]');
+      if (trialText) {
+        trialText.style.display = "none";
+      }
+    }
+
+    var observer = new MutationObserver(function(mutationsList) {
+      for (var mutation of mutationsList) {
+        if (mutation.type === "childList") {
+          hideTrialText();
+        }
+      }
+    });
+
+    var observerConfig = { childList: true, subtree: true };
+
+    window.addEventListener("DOMContentLoaded", function() {
+      var targetNode = document.body;
+      observer.observe(targetNode, observerConfig);
+    });
+
+
+    document.getElementById("map").addEventListener("mouseover", function() {
+      hideTrialText();
+    });
+    $(document).ready(function() {
+  var currentDescription = "";
+
+  $("#map svg path").on("click", function() {
+    var description = simplemaps_countrymap_mapdata.state_specific[this.id].description;
+    if (description) {
+      if (currentDescription !== description) {
+
+        $("#description-container").html(description).show();
+        currentDescription = description;
+      } else {
+
+        $("#description-container").hide();
+        currentDescription = "";
+      }
+    }
+  });
+});
+  </script>
+
+    
+
+
+  <section class="mapa" id="mapa">
+   
+    
+    <div class="content">
+      <div id="map-container">
+        <div id="map"></div>
+        
+      </div>
+    </div>
+  </section>
+  <script src="scriptcont.js" charset="utf-8"></script>
+
+</body>
+
+</html>
